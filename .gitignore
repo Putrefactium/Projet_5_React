@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Fichiers spécifiques au projet
+.guidelines
+.cursorrules
+
