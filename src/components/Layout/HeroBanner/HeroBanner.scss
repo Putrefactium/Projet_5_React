@@ -45,6 +45,13 @@
       text-align: center;
       left: 0;
     }
+
+    @include responsive(tablet) {
+        font-size: 36px;
+        width: 100%;
+        text-align: center;
+        left: 0;
+      }
   }
 }
 

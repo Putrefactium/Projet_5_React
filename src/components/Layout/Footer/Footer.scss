@@ -9,10 +9,17 @@
   font-size: 12px;
   font-weight: 500;
   gap: 20px;
+  margin-top: 20px; // Ajouté pour éviter que le footer soit collé au contenu
 
   &__p {
     width: 30%;
     text-align: center;
     line-height: 142.6%;
+  }
+
+  @include responsive(desktop) {
+    font-size: 24px;
+    gap: 40px;
+    padding: 0;
   }
 }

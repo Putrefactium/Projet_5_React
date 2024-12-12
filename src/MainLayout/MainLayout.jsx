@@ -5,8 +5,10 @@ import Footer from '@layout/Footer/Footer'
 function Layout() {
   return (
     <div className="layout">
-      <Header />
-      <Outlet />
+      <div className="layout__content"> 
+        <Header />
+        <Outlet />
+      </div>
       <Footer />
     </div>
   )

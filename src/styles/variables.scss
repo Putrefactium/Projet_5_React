@@ -25,11 +25,19 @@ $container-padding-desktop: 100px;
 $border-radius: 10px;
 $border-radius-large: 25px;
 
-// Mixins for responsive design
+// Mixin for responsive design
 @mixin responsive($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
-    @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
-      @content;
+    @if $breakpoint == 'tablet' {
+      $min: map-get($breakpoints, tablet);
+      $max: map-get($breakpoints, desktop);
+      @media screen and (min-width: $min) and (max-width: ($max - 1)) {
+        @content;
+      }
+    } @else {
+      @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+        @content;
+      }
     }
   }
 }

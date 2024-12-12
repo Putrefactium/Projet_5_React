@@ -41,6 +41,7 @@
       
       @include responsive(desktop) {
         font-size: 24px;
+        text-transform: none;
       }
 
       &:hover {

@@ -48,4 +48,9 @@
     z-index: 1;
     width: 50%;
   }
+
+  @include responsive(desktop) {
+    height: 340px;
+    width: auto;
+  }
 }
