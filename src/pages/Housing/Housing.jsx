@@ -1,6 +1,4 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
-import './Housing.scss'
 
 function Housing() {
   const { id } = useParams()

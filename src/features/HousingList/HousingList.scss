@@ -1,0 +1,38 @@
+@import '@styles/variables.scss';
+
+.housing-list {
+  flex: 1;
+  
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    
+    // Comportement mobile uniquement
+    @media screen and (max-width: 767px) {
+      max-height: calc(100vh - 350px);
+      overflow-y: auto;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    // Tablette
+    @include responsive(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-unit * 4;
+      max-height: none; 
+      overflow: visible; 
+    }
+    
+    // Desktop
+    @include responsive(desktop) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-unit * 5;
+      padding: $spacing-unit * 5;
+      background-color: $background-light;
+      border-radius: $border-radius-large;
+    }
+  }
+}

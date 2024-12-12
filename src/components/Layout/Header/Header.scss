@@ -1,0 +1,55 @@
+@import '@styles/variables.scss';
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+
+  &__logo {
+    width: 145px;
+    height: auto;
+    
+    @include responsive(desktop) {
+      width: 210px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 26px;
+    
+    @include responsive(tablet) {
+      gap: 57px;
+    }
+
+    &-link {
+      color: $primary-color;
+      text-decoration: none;
+      font-size: 12px;
+      color: $text-color;
+      font-weight: 500;
+      text-transform: uppercase;
+      
+      @include responsive(desktop) {
+        font-size: 24px;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+}

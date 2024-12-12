@@ -1,0 +1,51 @@
+@import '@styles/variables.scss';
+
+.housing-card {
+  position: relative;
+  width: 100%;
+  height: 255px;
+  border-radius: $border-radius;
+  overflow: hidden;
+  
+  a {
+    text-decoration: none;
+    color: $title-color;
+  }
+
+  &__image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          180deg, 
+          rgba(255, 255, 255, 0) 0%, 
+          rgba(0, 0, 0, 0.5) 100%
+        );
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: $spacing-unit * 2;
+    left: $spacing-unit * 2;
+    right: $spacing-unit * 2;
+    font-size: 18px;
+    font-weight: 700;
+    z-index: 1;
+    width: 50%;
+  }
+}

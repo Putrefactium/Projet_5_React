@@ -1,0 +1,18 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px 20px 0 20px;
+  gap: 27px;
+  
+  @include responsive(desktop) {
+    gap: 50px;
+    padding: 45px 100px 0 100px;
+  }
+  
+
+  .footer {
+    padding: 0;
+    margin: 0 -20px; // Compense le padding de la main
+  }
+} 
