@@ -1,12 +1,14 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import './Housing.scss'
 
 function Housing() {
   const { id } = useParams()
+  
   return (
-    <div>
+    <main className="housing">
       <h1>Logement {id}</h1>
-    </div>
+    </main>
   )
 }
 
