@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import HousingCard from '@features/HousingCard/HousingCard'
 import PaginationDots from '@components/UI/PaginationDots/PaginationDots'
-import housingsList from '@data/logements.json'
+import useHousingList from '@hooks/useHousingList'    
 
 function HousingList() {
   // Constantes
@@ -9,6 +9,7 @@ function HousingList() {
   const NEXT_CARDS_TO_LOAD = 2 // Nombre de cartes à charger au scroll en mode mobile
 
   // States
+  const housingsList = useHousingList() // Récupération des logements depuis le hook personnalisé qui récupère les logements depuis le contexte
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
   const [isLarge, setIsLarge] = useState(window.innerWidth >= 1440)
   const [currentPage, setCurrentPage] = useState(0)
@@ -36,7 +37,7 @@ function HousingList() {
     const startIndex = page * cardsPerPage
     // On retourne les logements de la page actuelle
     return housingsList.slice(startIndex, startIndex + cardsPerPage)
-  }, [isMobile, loadedCount, cardsPerPage, currentPage])
+  }, [isMobile, loadedCount, cardsPerPage, currentPage, housingsList])
 
   // Configuration de l'Observer pour le lazy loading artificiel en mode mobile
   useEffect(() => {
@@ -64,12 +65,12 @@ function HousingList() {
         observerRef.current.disconnect()
       }
     }
-  }, [isMobile])
+  }, [isMobile, housingsList])
 
   // Initialisation des cartes à afficher 
   useEffect(() => {
     setCurrentCards(getDisplayedHousings())
-  }, [getDisplayedHousings])
+  }, [getDisplayedHousings, housingsList])
 
   // Gestion de la transition entre les pages 
   const handlePageTransition = useCallback((nextPage) => {
