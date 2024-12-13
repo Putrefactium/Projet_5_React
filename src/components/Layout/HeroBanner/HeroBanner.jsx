@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react'
-import HeroBanner from '@assets/home_hero_banner.jpg'
+import { useLocation } from 'react-router-dom'
+import HomeHeroBanner from '@assets/home_hero_banner.jpg'
+import AboutHeroBanner from '@assets/about_hero_banner.jpg'
 
-// Hook pour récupérer la taille de la fenêtre
+// l'image de la bannière dépend du path de la page
+const heroBannerImg = {
+  '/': HomeHeroBanner,
+  '/about': AboutHeroBanner
+}
 
+// Hook pour récupérer la taille de la fenêtre pour gérer le retour à la ligne sur mobile du texte
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -22,15 +29,20 @@ function useWindowSize() {
   return windowSize
 }
 
-// On utilise le hook pour ajouter un <br /> sur mobile pour être en adéquation avec le design Figma
-
+// On utilise le hook pour ajouter un <br /> sur mobile pour être 
+// en adéquation avec le design Figma
 function Hero() {
   const { width } = useWindowSize()
   const isMobile = width <= 768 
+  const location = useLocation()
+  console.log(location.pathname)
 
   return (
     <figure className="herobanner">
-      <img src={HeroBanner} alt="Bannière de la page d'accueil" />
+      <img 
+        src={heroBannerImg[location.pathname]}
+        alt={`Bannière de la page ${location.pathname === '/' ? "d'accueil" : 'à propos'}`} 
+      />
       <figcaption>
         Chez vous, {isMobile ? <br /> : ''}partout et ailleurs
       </figcaption>
