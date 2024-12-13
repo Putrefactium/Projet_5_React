@@ -1,22 +1,23 @@
 // Reset et variables
-@import './reset';
-@import './variables';
+@use './reset';
+@use './variables' as *;
+@use './mixins' as *;
 
 // Layout components
-@import '../MainLayout/MainLayout.scss';
-@import '../components/Layout/Header/Header.scss';
-@import '../components/Layout/Footer/Footer.scss';
-@import '../components/Layout/HeroBanner/HeroBanner.scss';
+@use '../MainLayout/MainLayout';
+@use '../components/Layout/Header/Header';
+@use '../components/Layout/Footer/Footer';
+@use '../components/Layout/HeroBanner/HeroBanner';
 
 // Features
-@import '../features/HousingCard/HousingCard.scss';
-@import '../features/HousingList/HousingList.scss';
+@use '../features/HousingCard/HousingCard';
+@use '../features/HousingList/HousingList';
 
 // Pages
-@import '../pages/Home/Home.scss';
-@import '../pages/About/About.scss';
-@import '../pages/Housing/Housing.scss';
-@import '../pages/Error/Error.scss';
+@use '../pages/Home/Home';
+@use '../pages/About/About';
+@use '../pages/Housing/Housing';
+@use '../pages/Error/Error';
 
 
 body {
