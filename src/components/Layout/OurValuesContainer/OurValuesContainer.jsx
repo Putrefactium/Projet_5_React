@@ -1,7 +1,16 @@
+import CollapseButton from '@components/UI/CollapseButton/CollapseButton'
+import dataAbout from '@data/about_data.json'
+
 function OurValuesContainer() {
   return (
     <div className="our-values-container">
-      <h2>Nos valeurs</h2>
+      {dataAbout.map((item) => (
+        <CollapseButton 
+          key={item.id} 
+          title={item.title} 
+          content={item.content} 
+        />
+      ))}
     </div>
   )
 }

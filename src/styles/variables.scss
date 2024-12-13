@@ -10,11 +10,18 @@ $breakpoints: (
 $primary-color: #FF6060;     
 $background-light: #FFFFFF;  
 $background-dark: #000000;
+$background-light-gray: #F6F6F6;
 $text-color: #000000;       
 $title-color: #FFFFFF;          
 
 // Fonts
 $font-primary: 'Montserrat', sans-serif;
+
+// Font size
+$font-size-small: 12px;
+$font-size_about-title-button: 13px;
+$font-size-medium: 18px;
+$font-size-large: 24px;
 
 // Spacing
 $spacing-unit: 8px;

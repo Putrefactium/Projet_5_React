@@ -35,7 +35,6 @@ function Hero() {
   const { width } = useWindowSize()
   const isMobile = width <= 768 
   const location = useLocation()
-  console.log(location.pathname)
 
   return (
     <figure className="herobanner">
