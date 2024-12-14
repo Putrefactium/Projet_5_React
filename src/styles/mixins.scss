@@ -1,16 +1,16 @@
-// Mixin for responsive design
 @use './variables' as *;
+@use 'sass:map';
 
 @mixin responsive($breakpoint) {
-    @if map-has-key($breakpoints, $breakpoint) {
+    @if map.has-key($breakpoints, $breakpoint) {
       @if $breakpoint == 'tablet' {
-        $min: map-get($breakpoints, tablet);
-        $max: map-get($breakpoints, desktop);
+        $min: map.get($breakpoints, tablet);
+        $max: map.get($breakpoints, desktop);
         @media screen and (min-width: $min) and (max-width: ($max - 1)) {
           @content;
         }
       } @else {
-        @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+        @media screen and (min-width: map.get($breakpoints, $breakpoint)) {
           @content;
         }
       }
