@@ -1,5 +1,6 @@
 import CollapseButton from '@components/UI/CollapseButton/CollapseButton'
 import dataAbout from '@data/about_data.json'
+import './OurValuesContainer.scss'
 
 function OurValuesContainer() {
   return (

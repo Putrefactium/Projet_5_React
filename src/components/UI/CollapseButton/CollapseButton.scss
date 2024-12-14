@@ -9,7 +9,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: none;
         border: none;
         cursor: pointer;
         background: $primary-color;
@@ -35,8 +34,9 @@
         }
         
         .arrow {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
+            margin-top: 5px;
             border-right: 3px solid #FFF;
             border-bottom: 3px solid #FFF;
             transform: rotate(225deg);
@@ -45,6 +45,8 @@
         
         &.open .arrow {
             transform: rotate(45deg);
+            margin-top: 0;
+            margin-bottom: 5px;
         }
     }
 
