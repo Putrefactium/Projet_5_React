@@ -4,5 +4,12 @@
 .our-values-container {
     display: flex;
     flex-direction: column;
-    gap: $container-padding-mobile;
+    gap: $container-ourvalues-gap-mobile;
+    width: 100%;
+
+    @include responsive('desktop') {
+        width: 85%;
+        margin: 0 auto;
+        gap: $container-ourvalues-gap-desktop;
+    }
 }

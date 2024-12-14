@@ -10,7 +10,6 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 20px;
   }
 
   &__viewport {
@@ -38,7 +37,7 @@
       }
       
       &.double-row {
-        height: 800px;
+        height: 880px;
       }
     }
   }
@@ -62,7 +61,7 @@
       // grid-auto-rows: 340px;
       gap: 30px;
       padding: 50px;
-      background-color: $background-light;
+      background-color: $background-light-gray;
       border-radius: $border-radius-large;
       
       &.entering {

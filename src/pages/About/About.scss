@@ -4,5 +4,9 @@
 .about {
     display: flex;
     flex-direction: column;
-    gap: 19px;
+    gap: $container-body-gap-mobile;
+
+    @include responsive('desktop') {
+        gap: $container-body-gap-desktop;
+    }
 }

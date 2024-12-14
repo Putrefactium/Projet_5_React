@@ -37,14 +37,16 @@ function Hero() {
   const location = useLocation()
 
   return (
-    <figure className="herobanner">
+    <figure className={`herobanner ${location.pathname === '/' ? 'herobanner--home' : 'herobanner--about'}`}>
       <img 
         src={heroBannerImg[location.pathname]}
         alt={`Bannière de la page ${location.pathname === '/' ? "d'accueil" : 'à propos'}`} 
       />
-      <figcaption>
-        Chez vous, {isMobile ? <br /> : ''}partout et ailleurs
-      </figcaption>
+      {location.pathname === '/' && ( 
+        <figcaption>
+          Chez vous, {isMobile ? <br /> : ''}partout et ailleurs
+        </figcaption>
+      )}
     </figure>
   )
 }

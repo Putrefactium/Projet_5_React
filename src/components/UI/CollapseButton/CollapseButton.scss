@@ -21,18 +21,6 @@
             color: $title-color;
         }
 
-        @include responsive('tablet') {
-            h2 {
-                font-size: $font-size-medium;
-            }
-        }
-
-        @include responsive('desktop') {
-            h2 {
-                font-size: $font-size-large;
-            }
-        }
-        
         .arrow {
             width: 16px;
             height: 16px;
@@ -48,6 +36,20 @@
             margin-top: 0;
             margin-bottom: 5px;
         }
+
+        @include responsive('tablet') {
+            h2 {
+                font-size: $font-size-medium;
+            }
+        }
+
+        @include responsive('desktop') {
+            padding: 10px 20px 10px 15px;
+  
+            h2 {
+                font-size: $font-size-large;
+            }
+        }
     }
 
     .collapse-content {
@@ -60,15 +62,19 @@
         }
         
         p {
-            padding: 1rem;
+            padding: $description-padding-mobile;
             margin: 0;
             font-size: $font-size-small;
+            line-height: $line-height-small;
             background: $background-light-gray;
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
         }
 
         @include responsive('desktop') {
             p {
                 font-size: $font-size-medium;
+                padding: $description-padding-desktop;
             }
         }
     }

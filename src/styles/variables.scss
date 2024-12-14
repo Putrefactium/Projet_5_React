@@ -23,10 +23,23 @@ $font-size_about-title-button: 13px;
 $font-size-medium: 18px;
 $font-size-large: 24px;
 
+// Font style
+$line-height-small: 1.5;
+
 // Spacing
 $spacing-unit: 8px;
+
+// Padding
+$description-padding-mobile: 10px;
+$description-padding-desktop: 20px;
 $container-padding-mobile: 20px;
 $container-padding-desktop: 100px;
+
+// Gap
+$container-body-gap-mobile: 19px;
+$container-body-gap-desktop: 38px;
+$container-ourvalues-gap-mobile: 20px;
+$container-ourvalues-gap-desktop: 30px;
 
 // Border radius
 $border-radius: 10px;
