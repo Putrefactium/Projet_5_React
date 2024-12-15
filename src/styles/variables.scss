@@ -20,12 +20,14 @@ $font-primary: 'Montserrat', sans-serif;
 // Font size
 $font-size-small: 12px;
 $font-size_about-title-button: 13px;
+$font-size-404-sm: 14px;
 $font-size-medium: 18px;
 $font-size-large: 24px;
+$font-size-404-xxl: 96px;
 
 // Font style
 $line-height-small: 1.5;
-
+$font-weight-bold: 700;
 // Spacing
 $spacing-unit: 8px;
 
@@ -40,6 +42,7 @@ $container-body-gap-mobile: 19px;
 $container-body-gap-desktop: 38px;
 $container-ourvalues-gap-mobile: 20px;
 $container-ourvalues-gap-desktop: 30px;
+$container-main-error-gap-mobile: 119px;
 
 // Border radius
 $border-radius: 10px;
