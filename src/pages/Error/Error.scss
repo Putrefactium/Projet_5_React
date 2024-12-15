@@ -7,7 +7,13 @@
   align-items: center;
   gap: $container-main-error-gap-mobile;
   padding: $container-padding-mobile;
+
+  @include responsive(desktop) {
+    padding: $main-error-padding-desktop;
+    gap: $container-main-error-gap-desktop;
+  }
 }
+
 
 .error {
   display: flex;
@@ -15,10 +21,28 @@
   align-items: center;
   gap: $container-main-error-gap-mobile;
 
+  @include responsive(desktop) {
+    gap: $container-main-error-gap-desktop;
+  }
+
   & h1 {
-    font-size: $font-size-404-xxl;
+    font-size: $font-size-404-xxl-mobile;
     font-weight: $font-weight-bold;
     color: $primary-color;
+
+    @include responsive(tablet) {
+        font-size: $font-size-404-xxl-tablet;
+    }
+
+    @include responsive(desktop) {
+        font-size: $font-size-404-xxl-desktop;
+    }
+  }
+
+  @include responsive(desktop) {
+    & h1 {
+      font-size: $font-size-404-xxl-desktop;
+    }
   }
 
   & p {
@@ -30,6 +54,16 @@
     align-items: center;
     text-align: center;
     width: 80%;
+
+    @include responsive(tablet) {
+        font-size: $font-size-large;
+    }
+
+    @include responsive(desktop) {
+        flex-wrap: nowrap;
+        width: auto;
+        font-size: $font-size-large-desktop;
+    }
   }
 
   & span {
@@ -39,12 +73,31 @@
     &:first-child {
         width: 60%;
     }
+
+    @include responsive(desktop) {
+        width: auto; // Supprime la largeur fixe
+        display: inline;
+
+        &:first-child {
+          width: auto; // Supprime la largeur fixe pour le premier span
+          margin-right: 5px; // Ajoute un petit espace entre les spans
+        }
+    }
   }
 
+
   & a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: $font-size-404-sm;
     color: $text-color;
     text-decoration: underline;
     padding-bottom: 119px;
+
+    @include responsive(desktop) {
+        font-size: $font-size-medium;
+    }
   }
 }
