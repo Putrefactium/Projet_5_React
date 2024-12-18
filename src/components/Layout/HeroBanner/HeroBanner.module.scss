@@ -20,7 +20,7 @@
     object-position: center;
   }
 
-  &--home {
+  &.home {
     &::after {
       content: '';
       position: absolute;
@@ -32,7 +32,7 @@
     }
   }
 
-  &--about {
+  &.about {
     &::after {
       content: '';
       position: absolute;
@@ -44,7 +44,7 @@
     }
   }
 
-  figcaption {
+  .caption {
     position: absolute;
     top: 50%;
     left: 16px;
@@ -67,6 +67,4 @@
       left: 0;
     }  
   }
-}
-
-
+} 

@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
-import './PaginationDots.scss'
+import styles from './PaginationDots.module.scss'
 
 function PaginationDots({ totalPages, currentPage, onPageChange }) {
   return (
-    <div className="pagination-dots">
+    <div className={styles.container}>
       {[...Array(totalPages)].map((_, index) => (
         <button
           key={index}
-          className={`pagination-dots__dot ${currentPage === index ? 'active' : ''}`}
+          className={`${styles.dot} ${currentPage === index ? styles.active : ''}`}
           onClick={() => onPageChange(index)}
           aria-label={`Page ${index + 1}`}
         />

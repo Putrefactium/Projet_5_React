@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types'
+import styles from './HousingCard.module.scss'
 
 function HousingCard({ id, title, cover }) {
   return (
-    <article className="housing-card">
+    <article className={styles.card}>
       <a href={`/housing/${id}`}>
-        <div className="housing-card__image-container">
-          <img src={cover} alt={title} className="housing-card__image" />
+        <div className={styles.imageContainer}>
+          <img src={cover} alt={title} className={styles.image} />
         </div>
-        <h2 className="housing-card__title">{title}</h2>
+        <h2 className={styles.title}>{title}</h2>
       </a>
     </article>
   )

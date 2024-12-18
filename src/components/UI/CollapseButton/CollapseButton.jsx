@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import './CollapseButton.scss'
+import styles from './CollapseButton.module.scss'
 
 function CollapseButton({ title, content }) {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <div className="collapse-button">
+        <div className={styles.button}>
             <button 
-                className={`collapse-header ${isOpen ? 'open' : ''}`}
+                className={`${styles.header} ${isOpen ? styles.open : ''}`}
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <h2>{title}</h2>
-                <span className="arrow"></span>
+                <span className={styles.arrow}></span>
             </button>
-            <div className={`collapse-content ${isOpen ? 'open' : ''}`}>
+            <div className={`${styles.content} ${isOpen ? styles.open : ''}`}>
                 <p>{content}</p>
             </div>
         </div>

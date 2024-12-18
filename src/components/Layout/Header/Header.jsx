@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom'
 import logoDesktop from '@assets/LOGO.png'
 import logoMobile from '@assets/LOGO_mobile.png'
 import { useState, useEffect } from 'react'
+import styles from './Header.module.scss'
 
 function Header() {
   const [logo, setLogo] = useState(window.innerWidth > 1024 ? logoDesktop : logoMobile)
@@ -16,15 +17,15 @@ function Header() {
   }, [])
 
   return (
-    <header className="header">
-      <Link to="/" className="header__logo">
+    <header className={styles.header}>
+      <Link to="/" className={styles.logo}>
         <img src={logo} alt="Logo Kasa" />
       </Link>
-      <nav className="header__nav">
+      <nav className={styles.nav}>
         <NavLink 
           to="/" 
           className={({ isActive }) => 
-            isActive ? "header__nav-link active" : "header__nav-link"
+            isActive ? styles.navLinkActive : styles.navLink
           }
         >
           Accueil
@@ -32,7 +33,7 @@ function Header() {
         <NavLink 
           to="/about" 
           className={({ isActive }) => 
-            isActive ? "header__nav-link active" : "header__nav-link"
+            isActive ? styles.navLinkActive : styles.navLink
           }
         >
           À Propos

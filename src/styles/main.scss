@@ -5,13 +5,13 @@
 
 // Layout components
 @use '../MainLayout/MainLayout';
-@use '../components/Layout/Header/Header';
-@use '../components/Layout/Footer/Footer';
-@use '../components/Layout/HeroBanner/HeroBanner';
+@use '../components/Layout/Header/Header.module.scss';
+@use '../components/Layout/Footer/Footer.module.scss';
+@use '../components/Layout/HeroBanner/HeroBanner.module.scss';
 
 // Features
-@use '../features/HousingCard/HousingCard';
-@use '../features/HousingList/HousingList';
+@use '../features/HousingCard/HousingCard.module.scss';
+@use '../features/HousingList/HousingList.module.scss';
 
 // Pages
 @use '../pages/Home/Home';

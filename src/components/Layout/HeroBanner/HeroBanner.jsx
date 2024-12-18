@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import HomeHeroBanner from '@assets/home_hero_banner.jpg'
 import AboutHeroBanner from '@assets/about_hero_banner.jpg'
+import styles from './HeroBanner.module.scss'
 
 // l'image de la bannière dépend du path de la page
 const heroBannerImg = {
@@ -37,13 +38,15 @@ function Hero() {
   const location = useLocation()
 
   return (
-    <figure className={`herobanner ${location.pathname === '/' ? 'herobanner--home' : 'herobanner--about'}`}>
+    <figure className={`${styles.herobanner} ${
+      location.pathname === '/' ? styles.home : styles.about
+    }`}>
       <img 
         src={heroBannerImg[location.pathname]}
         alt={`Bannière de la page ${location.pathname === '/' ? "d'accueil" : 'à propos'}`} 
       />
       {location.pathname === '/' && ( 
-        <figcaption>
+        <figcaption className={styles.caption}>
           Chez vous, {isMobile ? <br /> : ''}partout et ailleurs
         </figcaption>
       )}

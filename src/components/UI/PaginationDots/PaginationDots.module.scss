@@ -1,6 +1,6 @@
 @use '@styles/variables' as *;
 
-.pagination-dots {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@
   overflow-x: hidden;
   flex-wrap: wrap;
 
-  &__dot {
+  .dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -29,4 +29,4 @@
       opacity: 0.8;
     }
   }
-}
+} 
