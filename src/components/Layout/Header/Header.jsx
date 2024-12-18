@@ -25,7 +25,7 @@ function Header() {
         <NavLink 
           to="/" 
           className={({ isActive }) => 
-            isActive ? styles.navLinkActive : styles.navLink
+            isActive ? styles.navLinkActive : styles.navLink  
           }
         >
           Accueil

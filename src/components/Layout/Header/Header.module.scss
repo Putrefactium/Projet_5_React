@@ -31,27 +31,28 @@
     @include responsive(tablet) {
       gap: 57px;
     }
-
-    .link {
-      color: $primary-color;
-      text-decoration: none;
-      font-size: 12px;
-      color: $text-color;
-      font-weight: 500;
-      text-transform: uppercase;
-      
-      @include responsive(desktop) {
-        font-size: 24px;
-        text-transform: none;
-      }
-
-      &:hover {
-        text-decoration: underline;
-      }
-
-      &.active {
-        text-decoration: underline;
-      }
-    }
   }
+}
+
+.navLink {
+  color: $primary-color;
+  text-decoration: none;
+  font-size: 12px;
+  color: $text-color;
+  font-weight: 500;
+  text-transform: uppercase;
+  
+  @include responsive(desktop) {
+    font-size: 24px;
+    text-transform: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.navLinkActive {
+  @extend .navLink;
+  text-decoration: underline;
 }
