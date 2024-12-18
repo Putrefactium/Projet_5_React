@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import HousingCard from '@features/HousingCard/HousingCard'
 import PaginationDots from '@components/UI/PaginationDots/PaginationDots'
-import useHousingList from '@hooks/useHousingList'    
+import useHousingList from '@hooks/useHousingList' // Import du hook personnalisé
+import styles from './HousingList.module.scss'
 
 function HousingList() {
   // Constantes
@@ -9,7 +10,7 @@ function HousingList() {
   const NEXT_CARDS_TO_LOAD = 2 // Nombre de cartes à charger au scroll en mode mobile
 
   // States
-  const housingsList = useHousingList() // Récupération des logements depuis le hook personnalisé qui récupère les logements depuis le contexte
+  const { housingsList, error, isLoading } = useHousingList() // Récupération des logements depuis le hook personnalisé qui récupère les logements depuis le contexte
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
   const [isLarge, setIsLarge] = useState(window.innerWidth >= 1440)
   const [currentPage, setCurrentPage] = useState(0)
@@ -139,20 +140,57 @@ function HousingList() {
 
     // En mode large (3 colonnes)
     if (isLarge) {
-      return currentCards.length <= 3 ? 'single-row' : 'double-row';
+      return currentCards.length <= 3 ? 'singleRow' : 'doubleRow';
     }
 
     // En mode Desktop Tablette (2 colonnes)
-    return currentCards.length <= 2 ? 'single-row' : 'double-row';
+    return currentCards.length <= 2 ? 'singleRow' : 'doubleRow';
     
   }, [isLarge, currentCards.length, isMobile]);
 
+  // Gestion des états de chargement et d'erreur
+  if (isLoading) {
+    return (
+      <section className={styles.list}>
+        <div className={styles.container}>
+          <div className={styles.loadingState}>
+            Chargement des logements...
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (error) {
+    return (
+      <section className={styles.list}>
+        <div className={styles.container}>
+          <div className={styles.errorState}>
+            Une erreur est survenue : {error}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  // Si pas de logements
+  if (!housingsList || housingsList.length === 0) {
+    return (
+      <section className={styles.list}>
+        <div className={styles.container}>
+          <div className={styles.emptyState}>
+            Aucun logement disponible
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
-    <section className="housing-list" ref={containerRef}>
-      <div className="housing-list__container">
-        <div className={`housing-list__viewport ${getRowsClass()}`}>
-          {/* Cartes actuelles */}
-          <div className={`housing-list__wrapper ${isTransitioning ? 'exiting' : ''}`}>
+    <section className={styles.list} ref={containerRef}>
+      <div className={styles.container}>
+        <div className={`${styles.viewport} ${getRowsClass() ? styles[getRowsClass()] : ''}`}>
+          <div className={`${styles.wrapper} ${isTransitioning ? styles.exiting : ''}`}>
             {currentCards.map(housing => (
               <HousingCard 
                 key={housing.id}
@@ -162,9 +200,8 @@ function HousingList() {
               />
             ))}
           </div>
-          {/* Cartes suivantes (pendant la transition) */}
           {isTransitioning && (
-            <div className="housing-list__wrapper entering">
+            <div className={`${styles.wrapper} ${styles.entering}`}>
               {nextCards.map(housing => (
                 <HousingCard 
                   key={housing.id}
@@ -176,14 +213,11 @@ function HousingList() {
             </div>
           )}
         </div>
-         {/* Indicateur de chargement en mode mobile */}
-         {/* TODO: Ajouter un loader */}
         {isMobile && loadedCount < housingsList.length && (
-          <div ref={loadingRef} className="housing-list__loading">
+          <div ref={loadingRef} className={styles.loading}>
             Chargement...
           </div>
         )}
-        {/* Pagination en mode non mobile */}
         {!isMobile && (
           <PaginationDots 
             totalPages={totalPages}

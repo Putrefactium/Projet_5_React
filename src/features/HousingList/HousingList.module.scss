@@ -1,0 +1,107 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.list {
+  flex: 1;
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.viewport {
+  position: relative;
+  height: auto;
+  overflow: visible;
+
+  &.doubleRow {
+    height: 600px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    overflow: hidden;
+    transition: height 0s ease-in-out;
+    
+    &.singleRow {
+      transition: height 0.5s ease-in-out;
+      height: 300px;
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    &.singleRow {
+      height: 440px;
+    }
+    
+    &.doubleRow {
+      height: 880px;
+    }
+  }
+}
+
+.wrapper {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 50px;
+    background-color: $background-light-gray;
+    border-radius: $border-radius-large;
+    
+    &.entering {
+      transform: translateX(100%);
+      animation: slideIn 0.5s ease-out forwards;
+    }
+    
+    &.exiting {
+      transform: translateX(0);
+      animation: slideOut 0.5s ease-out forwards;
+    }
+  }
+  
+  @media screen and (min-width: 1440px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px 60px;
+  }
+}
+
+.loading {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  color: $primary-color;
+  font-size: 16px;
+}
+
+.loadingState,
+.errorState,
+.emptyState {
+  text-align: center;
+  padding: 20px;
+  color: $primary-color;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOut {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+} 
