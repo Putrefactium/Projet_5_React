@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom'
-import useHousingList from '@hooks/useHousingList'
+import useHousing from '@hooks/useHousing'
+import HousingBody from './components/HousingBody/HousingBody'
 
 function Housing() {
   const { id } = useParams()
-  const { housingsList, error, isLoading } = useHousingList()
+  const { housing, error, isLoading } = useHousing(id)
   
-  // Gestion du chargement
   if (isLoading) {
     return (
       <main className="housing">
@@ -16,7 +16,6 @@ function Housing() {
     )
   }
 
-  // Gestion des erreurs
   if (error) {
     return (
       <main className="housing">
@@ -27,11 +26,7 @@ function Housing() {
     )
   }
 
-  // Carhement du logement correspondant à l'ID depuis le context
-  const currentHouse = housingsList.find((housing) => housing.id === id)
-
-  // Si le logement n'est pas trouvé
-  if (!currentHouse) {
+  if (!housing) {
     return (
       <main className="housing">
         <div className="housing__not-found-state">
@@ -43,10 +38,7 @@ function Housing() {
 
   return (
     <main className="housing">
-      <h1>
-        {currentHouse.title}
-        {console.log(currentHouse)}
-      </h1>
+      <HousingBody housing={housing} />
     </main>
   )
 }

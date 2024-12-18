@@ -187,6 +187,7 @@ function HousingList() {
   }
 
   return (
+    // Container de la liste de logements
     <section className={styles.list} ref={containerRef}>
       <div className={styles.container}>
         <div className={`${styles.viewport} ${getRowsClass() ? styles[getRowsClass()] : ''}`}>
@@ -200,6 +201,7 @@ function HousingList() {
               />
             ))}
           </div>
+          {/* Transition entre les pages et chargement des cartes suivantes */}
           {isTransitioning && (
             <div className={`${styles.wrapper} ${styles.entering}`}>
               {nextCards.map(housing => (
@@ -213,11 +215,13 @@ function HousingList() {
             </div>
           )}
         </div>
+        {/* Chargement des cartes suivantes en mode mobile */}
         {isMobile && loadedCount < housingsList.length && (
           <div ref={loadingRef} className={styles.loading}>
             Chargement...
           </div>
         )}
+        {/* Pagination en mode non mobile */}
         {!isMobile && (
           <PaginationDots 
             totalPages={totalPages}
