@@ -2,14 +2,15 @@ import { Link, NavLink } from 'react-router-dom'
 import logoDesktop from '@assets/LOGO.png'
 import logoMobile from '@assets/LOGO_mobile.png'
 import { useState, useEffect } from 'react'
+import { config } from '@config/config'
 import styles from './Header.module.scss'
 
 function Header() {
-  const [logo, setLogo] = useState(window.innerWidth > 1024 ? logoDesktop : logoMobile)
+  const [logo, setLogo] = useState(window.innerWidth > config.layout.breakpoints.tablet ? logoDesktop : logoMobile)
 
   useEffect(() => {
     const handleResize = () => {
-      setLogo(window.innerWidth > 768 ? logoDesktop : logoMobile)
+      setLogo(window.innerWidth > config.layout.breakpoints.tablet ? logoDesktop : logoMobile)
     }
 
     window.addEventListener('resize', handleResize)

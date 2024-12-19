@@ -3,16 +3,17 @@ import HousingCard from '@features/HousingCard/HousingCard'
 import PaginationDots from '@components/UI/PaginationDots/PaginationDots'
 import useHousingList from '@hooks/useHousingList' // Import du hook personnalisé
 import styles from './HousingList.module.scss'
+import { config } from '@config/config'
 
 function HousingList() {
   // Constantes
-  const INITIAL_LOADED_COUNT = 4 // Nombre de cartes à charger par défaut en mode mobile
-  const NEXT_CARDS_TO_LOAD = 2 // Nombre de cartes à charger au scroll en mode mobile
+  const INITIAL_LOADED_COUNT = config.housingList.initialLoadedCount // Nombre de cartes à charger par défaut en mode mobile
+  const NEXT_CARDS_TO_LOAD = config.housingList.nextCardsToLoad // Nombre de cartes à charger au scroll en mode mobile
 
   // States
   const { housingsList, error, isLoading } = useHousingList() // Récupération des logements depuis le hook personnalisé qui récupère les logements depuis le contexte
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
-  const [isLarge, setIsLarge] = useState(window.innerWidth >= 1440)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < config.layout.breakpoints.mobile)
+  const [isLarge, setIsLarge] = useState(window.innerWidth >= config.layout.breakpoints.desktop)
   const [currentPage, setCurrentPage] = useState(0)
   const [loadedCount, setLoadedCount] = useState(INITIAL_LOADED_COUNT) // Nombre de cartes à charger par défaut en mode mobile
   const [isTransitioning, setIsTransitioning] = useState(false) // Indicateur de transition entre les pages
@@ -25,7 +26,7 @@ function HousingList() {
   const containerRef = useRef(null) // Ref pour le container de la liste de logements
 
   // Calculs
-  const cardsPerPage = isLarge ? 6 : 4 // Nombre de cartes par page en mode Large, sinon 4 en Tablette
+  const cardsPerPage = isLarge ? config.housingList.cardsPerPage.desktop : config.housingList.cardsPerPage.tablet // Nombre de cartes par page en mode Large, sinon 4 en Tablette
   const totalPages = Math.ceil(housingsList.length / cardsPerPage) // Nombre total de pages
   
   // Fonction des logements à afficher
@@ -66,7 +67,7 @@ function HousingList() {
         observerRef.current.disconnect()
       }
     }
-  }, [isMobile, housingsList])
+  }, [isMobile, housingsList, NEXT_CARDS_TO_LOAD])
 
   // Initialisation des cartes à afficher 
   useEffect(() => {
@@ -95,7 +96,7 @@ function HousingList() {
       setCurrentPage(nextPage)
       setCurrentCards(nextHousings)
       setIsTransitioning(false)
-    }, 500)
+    }, config.animation.pageTransitionDuration)
   }, [isTransitioning, getDisplayedHousings])
 
   // Gestion du responsive 
@@ -124,7 +125,7 @@ function HousingList() {
       const interval = setInterval(() => {
         // On défile les pages en utilisant un modulo pour boucler sur les pages
         handlePageTransition((currentPage + 1) % totalPages)
-      }, 5000)
+      }, config.animation.autoScrollInterval)
 
       return () => clearInterval(interval)
     }

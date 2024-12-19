@@ -20,3 +20,9 @@ yarn-error.log*
 .guidelines
 .cursorrules
 
+# Environment files
+.env
+.env.production
+.env.local
+.env.*.local
+
