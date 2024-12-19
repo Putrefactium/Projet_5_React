@@ -1,10 +1,145 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-.housing-body {
+.housingBody {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: $spacing-md;
 }
+
+.housingInformations {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: $spacing-md;
+
+    @include responsive(desktop) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+}
+
+.housingContent {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    align-items: flex-start;
+}
+
+.housingTitle {
+    font-size: $font-size-medium;
+    color: $primary-color;
+    font-weight: 500;
+    line-height: 1.5;
+
+    @include responsive(desktop) {
+        font-size: 36px;
+    }
+}
+
+.housingLocation {
+    font-size: 14px;
+    font-weight: 500;
+    color: $text-color;
+
+    @include responsive(desktop) {
+        font-size: $font-size-medium;
+    }
+}
+
+.housingTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+}
+
+.housingTag {
+    padding: $spacing-xxs $spacing-md; // 5px 20px
+    border-radius: $border-radius;
+    background-color: $primary-color;
+    color: $title-color;
+    font-size: 10px;
+    font-weight: 700;
+
+    @include responsive(desktop) {
+        font-size: 14px;
+        border-radius: $border-radius-medium;
+        padding: $spacing-xxs $spacing-lg; // 5px 30px
+    }
+}
+
+.housingHostContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    @include responsive(desktop) {
+        flex-direction: column;
+        align-items: flex-end;
+        width: auto;
+        gap: $spacing-md;
+    }
+}
+
+.housingHost {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: $spacing-xs;
+
+    @include responsive(desktop) {
+        gap: $spacing-md;
+    }
+}
+
+.housingHostName {
+    font-size: 12px;
+    font-weight: 500;
+    color: $primary-color;
+    text-align: right;
+    width: 50px;
+    line-height: 1.5;
+
+    @include responsive(desktop) {
+        font-size: $font-size-medium;
+        width: 100px;
+    }
+}
+
+.housingHostPicture {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;  // Crée un cercle parfait
+    object-fit: cover;  
+
+    @include responsive(desktop) {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+.housingCollapseContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    @include responsive(desktop) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: $spacing-xxl;
+    }
+}
+
+
+
+
+
 

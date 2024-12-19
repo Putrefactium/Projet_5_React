@@ -4,17 +4,20 @@
 .gallery {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 255px;
   overflow: hidden;
-  border-radius: $border-radius;
+  border-radius: $border-radius-medium;
 
+  @include responsive(desktop) {
+    height: 415px;
+  }
 
   .error {
    text-align: center;
    padding: $spacing-xs;
    color: #ff6b6b;
    background-color: #fff5f5;
-   border-radius: $border-radius;
+   border-radius: $border-radius-medium;
    margin: 1rem 0;
   }
   

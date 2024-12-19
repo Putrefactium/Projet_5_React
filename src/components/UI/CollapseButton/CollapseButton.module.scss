@@ -3,7 +3,7 @@
 
 .button {
     width: 100%;
-    
+
     .header {
         width: 100%;
         display: flex;
@@ -12,13 +12,34 @@
         border: none;
         cursor: pointer;
         background: $primary-color;
-        padding: 10px;
+        padding: $spacing-xs;
         border-radius: 5px;
+
+        &.housing {
+            padding: $spacing-xs;
+            border-radius: $border-radius-medium;
+
+            @include responsive('desktop') {
+                padding: $spacing-xs $spacing-md;
+            }
+        }
 
         h2 {
             font-size: 13px;
             font-weight: 700;
             color: $title-color;
+
+            @include responsive('tablet') {
+                font-size: $font-size-medium;
+            }
+
+            @include responsive('desktop') {
+                font-size: $font-size-large;
+
+                &.housing {
+                    font-size: $font-size-medium;
+                }
+            }
         }
 
         .arrow {
@@ -29,7 +50,19 @@
             border-bottom: 3px solid #FFF;
             transform: rotate(225deg);
             transition: transform 0.3s ease;
+
+            &.housing {
+                width: 10px;
+                height: 10px;
+
+                @include responsive('desktop') {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
         }
+
+        
         
         &.open .arrow {
             transform: rotate(45deg);
@@ -37,18 +70,8 @@
             margin-bottom: 5px;
         }
 
-        @include responsive('tablet') {
-            h2 {
-                font-size: $font-size-medium;
-            }
-        }
-
         @include responsive('desktop') {
             padding: 10px 20px 10px 15px;
-  
-            h2 {
-                font-size: $font-size-large;
-            }
         }
     }
 
@@ -56,9 +79,11 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease-in-out;
-        
+
         &.open {
             max-height: 500px;
+            display: flex;
+            flex-direction: column;
         }
         
         p {
@@ -69,12 +94,22 @@
             background: $background-light-gray;
             border-bottom-left-radius: $border-radius;
             border-bottom-right-radius: $border-radius;
+            
+        }
+
+        ul {
+            list-style-type: none;
         }
 
         @include responsive('desktop') {
             p {
                 font-size: $font-size-medium;
                 padding: $spacing-md;
+                list-style-type: none;
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                min-height: 270px;
             }
         }
     }

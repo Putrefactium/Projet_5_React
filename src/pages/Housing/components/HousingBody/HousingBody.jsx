@@ -1,31 +1,45 @@
 import PropTypes from 'prop-types'
-import HousingGallery from '../HousingGallery/HousingGallery'
+import HousingGallery from './HousingGallery/HousingGallery'
 import Rating from './Rating/Rating'
 import Collapse from '@components/UI/CollapseButton/CollapseButton'
+import styles from './HousingBody.module.scss'
 
 function HousingBody({ housing }) {
  return (
-   <>
-     <HousingGallery pictures={housing.pictures} />
-     <div className="housing-content">
-      <h1>{housing.title}</h1>
-      <h2>{housing.location}</h2>
-      <div className="housing-tags">
-        {housing.tags.map((tag) => (
-          <span key={tag}>{tag}</span>
-        ))}
+    <div className={styles.housingBody}>
+      <HousingGallery pictures={housing.pictures} />
+      <div className={styles.housingInformations}>
+        <div className={styles.housingContent}>
+            <h1 className={styles.housingTitle}>{housing.title}</h1>
+            <h2 className={styles.housingLocation}>{housing.location}</h2>
+            <div className={styles.housingTags}>
+            {housing.tags.map((tag) => (
+              <span key={tag} className={styles.housingTag}>{tag}</span>
+            ))}
+        </div>
       </div>
-     </div>
-     <div className="housing-host">
-       <p>{housing.host.name}</p>
-       <img src={housing.host.picture} alt={housing.host.name} />
-       <div className="housing-rating">
-        <Rating rating={housing.rating} />
-       </div>
-     </div>
-     <Collapse title="Description" content={housing.description} />
+      <div className={styles.housingHostContainer}>
+        <div className={styles.housingHost}>
+          <p className={styles.housingHostName}>{housing.host.name}</p>
+          <img src={housing.host.picture} alt={housing.host.name} className={styles.housingHostPicture} />
+        </div>
+        <div className={styles.housingRating}>
+          <Rating rating={housing.rating} />
+        </div>
+      </div>
+    </div>
+    <div className={styles.housingCollapseContainer}>
+     <Collapse 
+        title="Description" 
+        className={styles.housingCollapse}
+        variant="housing"
+        content={housing.description} 
+        icon="fa-solid fa-arrow-down"
+     />
      <Collapse 
         title="Équipements" 
+        className={styles.housingCollapse}
+        variant="housing"
         content={
           <ul>
             {housing.equipments.map((equipment) => (
@@ -35,8 +49,8 @@ function HousingBody({ housing }) {
         }
         icon="fa-solid fa-arrow-down"
      />
-   </>
-
+    </div>
+    </div>
  )
 }
 

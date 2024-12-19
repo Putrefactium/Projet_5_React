@@ -2,17 +2,17 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import styles from './CollapseButton.module.scss'
 
-function CollapseButton({ title, content }) {
+function CollapseButton({ title, content, className, variant }) {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <div className={styles.button}>
+        <div className={`${styles.button} ${className || ''}`}>
             <button 
-                className={`${styles.header} ${isOpen ? styles.open : ''}`}
+                className={`${styles.header} ${styles[variant]} ${isOpen ? styles.open : ''}`}
                 onClick={() => setIsOpen(!isOpen)}
             >
-                <h2>{title}</h2>
-                <span className={styles.arrow}></span>
+                <h2 className={styles[variant]}>{title}</h2>
+                <span className={`${styles.arrow} ${styles[variant]}`}></span>
             </button>
             <div className={`${styles.content} ${isOpen ? styles.open : ''}`}>
                 <p>{content}</p>
@@ -23,7 +23,9 @@ function CollapseButton({ title, content }) {
 
 CollapseButton.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired
+  content: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  variant: PropTypes.string
 }
 
 export default CollapseButton

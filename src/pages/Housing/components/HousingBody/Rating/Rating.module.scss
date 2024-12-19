@@ -6,12 +6,23 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: $spacing-xxs;
 
     .active {
         color: $primary-color;
+        font-size: 18px;
+
+        @include responsive(desktop) {
+            font-size: 24px;
+        }
     }
 
     .inactive {
         color: $background-light-gray;
+        font-size: 18px;
+
+        @include responsive(desktop) {
+            font-size: 24px;
+        }
     }
 }
