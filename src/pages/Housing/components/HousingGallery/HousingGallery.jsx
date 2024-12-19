@@ -31,19 +31,20 @@ function HousingGallery({ pictures }) {
   useEffect(() => {
     const interval = setInterval(() => {
       handleNavigation('next')
-    }, 5000)
+    }, 5000) // TODO: Env variable
     return () => clearInterval(interval)
   }, [handleNavigation])
 
   // Gestion du mode mobile
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
+    const handleResize = () => { 
+      setIsMobile(window.innerWidth < 768) // TODO: Env variable
     }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  // Gestion des erreurs
   if (!Array.isArray(pictures)) {
     return <div className={styles.error}>Une erreur est survenue lors du chargement des images</div>
   }
@@ -89,17 +90,17 @@ function HousingGallery({ pictures }) {
            className={`${styles.navButton} ${styles.prev}`}
            onClick={() => handleNavigation('prev')}
          >
-           ←
+           <span className={styles.arrow}></span>
          </button>
          {/* Ajout du compteur d'images */}
         {isMobile ? null : <div className={styles.counter}>
-          {currentImage + 1} / {pictures.length}
+          {currentImage + 1}/{pictures.length}
         </div>}
          <button 
            className={`${styles.navButton} ${styles.next}`}
            onClick={() => handleNavigation('next')}
          >
-           →
+           <span className={styles.arrow}></span>
          </button>
        </>
      )}
