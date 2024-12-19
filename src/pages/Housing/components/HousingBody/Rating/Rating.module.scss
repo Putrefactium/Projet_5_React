@@ -1,0 +1,17 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .active {
+        color: $primary-color;
+    }
+
+    .inactive {
+        color: $background-light-gray;
+    }
+}

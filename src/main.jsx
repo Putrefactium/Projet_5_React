@@ -5,6 +5,7 @@ import { HousingProvider } from '@providers/HousingProvider'
 import { router } from './router'
 import './styles/main.scss'
 import { config } from '@config/config'
+import '@utils/fontawesome'
 
 document.title = config.app.name
 
