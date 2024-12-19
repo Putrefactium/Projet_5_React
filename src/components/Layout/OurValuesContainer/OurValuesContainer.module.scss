@@ -4,12 +4,12 @@
 .container {
     display: flex;
     flex-direction: column;
-    gap: $container-ourvalues-gap-mobile;
+    gap: $spacing-md;
     width: 100%;
 
     @include responsive('desktop') {
         width: 85%;
         margin: 0 auto;
-        gap: $container-ourvalues-gap-desktop;
+        gap: $spacing-xl;
     }
 } 

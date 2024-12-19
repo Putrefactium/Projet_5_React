@@ -1,18 +1,21 @@
 @use './variables' as *;
-@use 'sass:map';
 
 @mixin responsive($breakpoint) {
-    @if map.has-key($breakpoints, $breakpoint) {
-      @if $breakpoint == 'tablet' {
-        $min: map.get($breakpoints, tablet);
-        $max: map.get($breakpoints, desktop);
-        @media screen and (min-width: $min) and (max-width: ($max - 1)) {
-          @content;
-        }
-      } @else {
-        @media screen and (min-width: map.get($breakpoints, $breakpoint)) {
-          @content;
-        }
-      }
+  @if $breakpoint == 'mobile' {
+    @media screen and (max-width: #{$breakpoint-mobile - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == 'tablet' {
+    @media screen and (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == 'desktop' {
+    @media screen and (min-width: #{$breakpoint-tablet}) {
+      @content;
+    }
+  } @else if $breakpoint == 'large' {
+    @media screen and (min-width: #{$breakpoint-desktop}) {
+      @content;
     }
   }
+}

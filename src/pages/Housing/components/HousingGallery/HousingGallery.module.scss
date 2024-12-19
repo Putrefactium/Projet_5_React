@@ -11,24 +11,24 @@
 
   .error {
    text-align: center;
-   padding: $description-padding-mobile;
+   padding: $spacing-xs;
    color: #ff6b6b;
    background-color: #fff5f5;
-   border-radius: 4px;
+   border-radius: $border-radius;
    margin: 1rem 0;
   }
   
   .counter {
     position: absolute;
-    bottom: 20px;
+    bottom: $spacing-md;
     left: 50%;
     transform: translateX(-50%);
     color: $title-color;
     font-size: $font-size-medium;
-    font-weight: $font-weight-medium;
+    font-weight: 500;
     background-color: rgba(0, 0, 0, 0.2);
-    padding: 5px 10px;
-    border-radius: 4px;
+    padding: $spacing-xxs $spacing-xs;
+    border-radius: $border-radius;
     z-index: 2;
   }
     
@@ -71,16 +71,16 @@
     transform: translateY(-50%);
     color: white;
     background: none;
-    padding: 10px;
+    padding: $spacing-xs;
     border: none;
     cursor: pointer;
     
     @include responsive(tablet) {
-      padding: 20px;
+      padding: $spacing-md;
     }
 
     @include responsive(desktop) {
-      padding: 30px;
+      padding: $spacing-lg;
     }
     
     .arrow {

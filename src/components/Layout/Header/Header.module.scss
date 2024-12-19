@@ -6,7 +6,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  max-width: 1440px;
+  max-width: $breakpoint-desktop;
   margin: 0 auto;
   width: 100%;
 
@@ -26,10 +26,10 @@
 
   .nav {
     display: flex;
-    gap: 26px;
+    gap: $spacing-md;
     
     @include responsive(tablet) {
-      gap: 57px;
+      gap: $spacing-xl;
     }
   }
 }
@@ -37,13 +37,13 @@
 .navLink {
   color: $primary-color;
   text-decoration: none;
-  font-size: 12px;
+  font-size: $font-size-small;
   color: $text-color;
   font-weight: 500;
   text-transform: uppercase;
   
   @include responsive(desktop) {
-    font-size: 24px;
+    font-size: $font-size-large;
     text-transform: none;
   }
 

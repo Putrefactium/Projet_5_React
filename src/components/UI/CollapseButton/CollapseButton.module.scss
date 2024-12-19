@@ -16,7 +16,7 @@
         border-radius: 5px;
 
         h2 {
-            font-size: $font-size_about-title-button;
+            font-size: 13px;
             font-weight: 700;
             color: $title-color;
         }
@@ -62,7 +62,7 @@
         }
         
         p {
-            padding: $description-padding-mobile;
+            padding: $spacing-xs;
             margin: 0;
             font-size: $font-size-small;
             line-height: $line-height-small;
@@ -74,7 +74,7 @@
         @include responsive('desktop') {
             p {
                 font-size: $font-size-medium;
-                padding: $description-padding-desktop;
+                padding: $spacing-md;
             }
         }
     }

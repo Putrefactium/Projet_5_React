@@ -5,12 +5,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $container-main-error-gap-mobile;
-  padding: $container-padding-mobile;
+  gap: $spacing-md;
+  padding: $spacing-md;
 
   @include responsive(desktop) {
-    padding: $main-error-padding-desktop;
-    gap: $container-main-error-gap-desktop;
+    padding: $spacing-xl;
+    gap: $spacing-xl;
   }
 }
 
@@ -19,29 +19,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $container-main-error-gap-mobile;
+  gap: $spacing-md;
 
   @include responsive(desktop) {
-    gap: $container-main-error-gap-desktop;
+    gap: $spacing-xl;
   }
 
   & h1 {
-    font-size: $font-size-404-xxl-mobile;
-    font-weight: $font-weight-bold;
+    font-size: 96px;
+    font-weight: 700;
     color: $primary-color;
 
     @include responsive(tablet) {
-        font-size: $font-size-404-xxl-tablet;
+        font-size: 192px;
     }
 
     @include responsive(desktop) {
-        font-size: $font-size-404-xxl-desktop;
+        font-size: 288px;
     }
   }
 
   @include responsive(desktop) {
     & h1 {
-      font-size: $font-size-404-xxl-desktop;
+      font-size: 288px;
     }
   }
 
@@ -62,7 +62,7 @@
     @include responsive(desktop) {
         flex-wrap: nowrap;
         width: auto;
-        font-size: $font-size-large-desktop;
+        font-size: 36px;
     }
   }
 
@@ -91,7 +91,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: $font-size-404-sm;
+    font-size: 14px;
     color: $text-color;
     text-decoration: underline;
     padding-bottom: 119px;

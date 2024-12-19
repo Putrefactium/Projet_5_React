@@ -4,9 +4,9 @@
 .home {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: $spacing-md;
 
   @include responsive(desktop) {
-    gap: 43px;
+    gap: $spacing-xl;
   }
 }
