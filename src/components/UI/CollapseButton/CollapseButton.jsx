@@ -14,8 +14,8 @@ function CollapseButton({ title, content, className, variant }) {
                 <h2 className={styles[variant]}>{title}</h2>
                 <span className={`${styles.arrow} ${styles[variant]}`}></span>
             </button>
-            <div className={`${styles.content} ${isOpen ? styles.open : ''}`}>
-                <p>{content}</p>
+            <div className={`${styles[variant]} ${styles.content} ${isOpen ? styles.open : ''}`}>
+                <p className={styles[variant]}>{content}</p>
             </div>
         </div>
     )
