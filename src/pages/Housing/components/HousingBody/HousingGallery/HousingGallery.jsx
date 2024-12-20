@@ -2,6 +2,20 @@ import PropTypes from 'prop-types'
 import { useState, useEffect, useCallback } from 'react'
 import styles from './HousingGallery.module.scss'
 
+/**
+ * @description Composant qui affiche une galerie d'images avec une transition fluide entre les images
+ * @component
+ * 
+ * @param {Object} props - Les propriétés du composant
+ * @param {Array} props.pictures - Un tableau d'URL d'images
+ * 
+ * @example
+ * return (
+ *   <HousingGallery pictures={['image1.jpg', 'image2.jpg', 'image3.jpg']} />
+ * )
+ * 
+ * @returns {JSX.Element} Un div contenant les images et les boutons de navigation
+ */
 
 function HousingGallery({ pictures }) {
   const [currentImage, setCurrentImage] = useState(0) 

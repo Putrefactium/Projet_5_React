@@ -3,6 +3,17 @@ import Header from '@layout/Header/Header'
 import Footer from '@layout/Footer/Footer'
 import styles from './Error.module.scss'
 
+/**
+ * @description Page d'erreur 404 avec un message d'erreur et un lien pour retourner à la page d'accueil
+ * @page
+ * 
+ * @example
+ * Dans le router :
+ * <Route path="/error" element={<Error />} />
+ * 
+ * @returns {JSX.Element} Un div contenant le message d'erreur et le lien pour retourner à la page d'accueil
+ */
+
 function Error() {
   return (
     <>

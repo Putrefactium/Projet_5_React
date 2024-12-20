@@ -1,6 +1,23 @@
 import PropTypes from 'prop-types'
 import styles from './PaginationDots.module.scss'
 
+/**
+ * @description Composant qui affiche des points de pagination
+ * @component
+ * 
+ * @param {Object} props - Les propriétés du composant
+ * @param {number} props.totalPages - Le nombre total de pages
+ * @param {number} props.currentPage - La page actuelle
+ * @param {function} props.onPageChange - La fonction à appeler lorsqu'un point de pagination est cliqué
+ * 
+ * @example
+ * return (
+ *   <PaginationDots totalPages={10} currentPage={1} onPageChange={() => {}} />
+ * )
+ * 
+ * @returns {JSX.Element} Un div contenant les points de pagination
+ */
+
 function PaginationDots({ totalPages, currentPage, onPageChange }) {
   return (
     <div className={styles.container}>

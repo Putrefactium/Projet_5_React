@@ -4,6 +4,18 @@ import HomeHeroBanner from '@assets/home_hero_banner.jpg'
 import AboutHeroBanner from '@assets/about_hero_banner.jpg'
 import styles from './HeroBanner.module.scss'
 
+/**
+ * @description Composant qui affiche la bannière de la page d'accueil ou de la page à propos
+ * @component
+ * 
+ * @example
+ * return (
+ *   <HeroBanner />
+ * )
+ * 
+ * @returns {JSX.Element} Une figure contenant l'image de la bannière
+ */
+
 // l'image de la bannière dépend du path de la page
 const heroBannerImg = {
   '/': HomeHeroBanner,

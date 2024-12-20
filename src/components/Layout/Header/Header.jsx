@@ -5,6 +5,18 @@ import { useState, useEffect } from 'react'
 import { config } from '@config/config'
 import styles from './Header.module.scss'
 
+/**
+ * @description Composant qui affiche le header avec le logo de Kasa et les liens de navigation
+ * @component
+ * 
+ * @example
+ * return (
+ *   <Header />
+ * )
+ * 
+ * @returns {JSX.Element} Un header avec le logo de Kasa et les liens de navigation
+ */
+
 function Header() {
   const [logo, setLogo] = useState(window.innerWidth > config.layout.breakpoints.tablet ? logoDesktop : logoMobile)
 

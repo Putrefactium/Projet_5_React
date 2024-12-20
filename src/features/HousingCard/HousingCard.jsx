@@ -1,6 +1,23 @@
 import PropTypes from 'prop-types'
 import styles from './HousingCard.module.scss'
 
+/**
+ * @description Composant qui affiche un logement avec une image de couverture et un titre
+ * @component
+ * 
+ * @param {Object} props - Les propriétés du composant
+ * @param {string} props.id - L'identifiant du logement
+ * @param {string} props.title - Le titre du logement
+ * @param {string} props.cover - L'URL de l'image de couverture du logement
+ * 
+ * @example
+ * return (
+ *   <HousingCard id="1" title="Logement 1" cover="image.jpg" />
+ * )
+ * 
+ * @returns {JSX.Element} Un article contenant l'image et le titre du logement
+ */
+
 function HousingCard({ id, title, cover }) {
   return (
     <article className={styles.card}>

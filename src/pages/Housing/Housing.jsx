@@ -3,6 +3,17 @@ import useHousing from '@hooks/useHousing'
 import HousingBody from './components/HousingBody/HousingBody'
 import styles from './Housing.module.scss'
 
+/**
+ * @description Page de logement avec les informations du logement
+ * @page
+ * 
+ * @example
+ * Dans le router :
+ * <Route path="/housing/:id" element={<Housing />} />
+ * 
+ * @returns {JSX.Element} Un main contenant les informations du logement
+ */
+
 function Housing() {
   const { id } = useParams()
   const { housing, error, isLoading } = useHousing(id)

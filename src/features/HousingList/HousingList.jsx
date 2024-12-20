@@ -5,6 +5,19 @@ import useHousingList from '@hooks/useHousingList' // Import du hook personnalis
 import styles from './HousingList.module.scss'
 import { config } from '@config/config'
 
+/**
+ * @description Composant qui affiche une liste de logements avec pagination et chargement lazy
+ * Selon la taille de l'écran, la liste de logements est affichée en mode mobile ou en mode desktop
+ * @component
+ * 
+ * @example
+ * return (
+ *   <HousingList />
+ * )
+ * 
+ * @returns {JSX.Element} Une section contenant la liste des logements avec pagination
+ */
+
 function HousingList() {
   // Constantes
   const INITIAL_LOADED_COUNT = config.housingList.initialLoadedCount // Nombre de cartes à charger par défaut en mode mobile
