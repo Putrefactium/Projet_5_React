@@ -76,17 +76,17 @@
     }
 
     .content {
-        height: 0;
+        max-height: 0;
         overflow: hidden;
-        transition: height 0.3s ease-in-out;
+        transition: max-height 0.3s ease-in-out;
 
         &.open {
-            height: auto;
+            max-height: 1000px;
             display: flex;
             flex-direction: column;
 
             @include responsive(desktop) {
-                height: auto;
+                max-height: 1000px;
             }
         }
         
