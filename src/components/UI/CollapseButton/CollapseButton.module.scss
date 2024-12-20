@@ -81,9 +81,13 @@
         transition: height 0.3s ease-in-out;
 
         &.open {
-            height: 200px;
+            height: auto;
             display: flex;
             flex-direction: column;
+
+            @include responsive(desktop) {
+                height: auto;
+            }
         }
         
         p {
@@ -95,17 +99,24 @@
             border-bottom-left-radius: $border-radius;
             border-bottom-right-radius: $border-radius;
 
+            @include responsive('tablet') { 
+                font-size: $font-size-medium;
+                flex-grow: 1;
+
+                &.housing {
+                    height: 200px;
+                }
+            }
+
             @include responsive('desktop') {
                 font-size: $font-size-medium;
                 padding: $spacing-md;
                 list-style-type: none;
                 flex-grow: 1;
-                // display: flex;
-                // align-items: center;
                 overflow-y: auto;
 
                 &.housing {
-                    height: 100%;
+                    height: 200px;
                 }
             }
         }

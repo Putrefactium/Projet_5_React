@@ -26,10 +26,14 @@
 
   .nav {
     display: flex;
-    gap: $spacing-md;
+    gap: $spacing-xl;
     
     @include responsive(tablet) {
-      gap: $spacing-xl;
+      gap: $spacing-xxl;
+    }
+
+    @include responsive(desktop) {
+      gap: $spacing-xxxl;
     }
   }
 }
