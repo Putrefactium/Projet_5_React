@@ -8,6 +8,10 @@
   overflow: hidden;
   border-radius: $border-radius-medium;
 
+  @include responsive(tablet) {
+    height: 415px;
+  }
+
   @include responsive(desktop) {
     height: 415px;
   }
