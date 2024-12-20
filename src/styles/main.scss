@@ -4,7 +4,7 @@
 @use './mixins' as *;
 
 // Layout components
-@use '../MainLayout/MainLayout';
+@use '../MainLayout/MainLayout.module.scss';
 @use '../components/Layout/Header/Header.module.scss';
 @use '../components/Layout/Footer/Footer.module.scss';
 @use '../components/Layout/HeroBanner/HeroBanner.module.scss';
@@ -14,10 +14,10 @@
 @use '../features/HousingList/HousingList.module.scss';
 
 // Pages
-@use '../pages/Home/Home';
-@use '../pages/About/About';
-@use '../pages/Housing/Housing';
-@use '../pages/Error/Error';
+@use '../pages/Home/Home.module.scss';
+@use '../pages/About/About.module.scss';
+@use '../pages/Housing/Housing.module.scss';
+@use '../pages/Error/Error.module.scss';
 
 
 body {

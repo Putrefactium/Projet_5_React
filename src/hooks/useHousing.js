@@ -5,7 +5,7 @@ function useHousing(id) {
  const [housing, setHousing] = useState(null)
  const [isLoading, setIsLoading] = useState(true)
  const [error, setError] = useState(null)
- const cache = useRef(new Map())
+ const cache = useRef(new Map()) // Initialisation du cache avec une map car plusieurs valeurs sont nécessaires
  
   // Récupération du contexte
   const housings = useContext(HousingContext)

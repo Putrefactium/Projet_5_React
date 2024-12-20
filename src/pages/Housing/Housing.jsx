@@ -1,6 +1,7 @@
-import { useParams } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import useHousing from '@hooks/useHousing'
 import HousingBody from './components/HousingBody/HousingBody'
+import styles from './Housing.module.scss'
 
 function Housing() {
   const { id } = useParams()
@@ -8,36 +9,23 @@ function Housing() {
   
   if (isLoading) {
     return (
-      <main className="housing">
-        <div className="housing__loading-state">
+      <main className={styles.housing}>
+        <div className={styles.housing__loadingState}>
           Chargement du logement...
         </div>
       </main>
     )
   }
-
-  if (error) {
+ 
+  // Utilisation de Navigate pour rediriger vers la page d'erreur si l'id n'est pas valide ou si une erreur est survenue
+  if (error || !housing) {
     return (
-      <main className="housing">
-        <div className="housing__error-state">
-          Une erreur est survenue : {error}
-        </div>
-      </main>
-    )
-  }
-
-  if (!housing) {
-    return (
-      <main className="housing">
-        <div className="housing__not-found-state">
-          Ce logement n&apos;existe pas
-        </div>
-      </main>
+      <Navigate to="/Error" replace/>
     )
   }
 
   return (
-    <main className="housing">
+    <main className={styles.housing}>
       <HousingBody housing={housing} />
     </main>
   )

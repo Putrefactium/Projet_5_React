@@ -5,12 +5,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-md;
+  gap: 113px;
   padding: $spacing-md;
 
   @include responsive(desktop) {
     padding: $spacing-xl;
-    gap: $spacing-xl;
+    gap: 139px;
   }
 }
 
@@ -19,10 +19,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-md;
+  gap: 113px;
 
   @include responsive(desktop) {
-    gap: $spacing-xl;
+    gap: 139px;
   }
 
   & h1 {
