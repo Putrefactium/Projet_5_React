@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import { useState, useEffect, useCallback } from 'react'
 import styles from './HousingGallery.module.scss'
+import { config } from '@config/config'
+import Modal from '../Modal/Modal'
 
 /**
  * @description Composant qui affiche une galerie d'images avec une transition fluide entre les images
@@ -22,10 +24,14 @@ function HousingGallery({ pictures }) {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [nextImage, setNextImage] = useState(null)
   const [direction, setDirection] = useState(null)
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768) // TODO: Env variable
+  const [isMobile, setIsMobile] = useState(window.innerWidth < config.layout.breakpoints.mobile) 
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
 
+  // Gestion de la navigation entre les images
   const handleNavigation = useCallback((direction) => {
     if (isTransitioning) return // Si une transition est en cours, on ne fait rien
+    if (isModalOpen) return // Si la modal est ouverte, on ne fait rien
 
     const nextIndex = direction === 'next' 
     ? (currentImage + 1) % pictures.length 
@@ -40,19 +46,31 @@ function HousingGallery({ pictures }) {
       setCurrentImage(nextIndex)
       setIsTransitioning(false)
    }, 500)
-  }, [currentImage, pictures, isTransitioning])
+  }, [currentImage, pictures, isTransitioning, isModalOpen])
 
+  // Gestion de l'ouverture de la modal
+  const openModal = (index) => {
+    setIsModalOpen(true)
+    setSelectedImageIndex(index)
+  }
+
+  // Gestion de la fermeture de la modal
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
+  // Gestion de la transition automatique entre les images
   useEffect(() => {
     const interval = setInterval(() => {
       handleNavigation('next')
-    }, 5000) // TODO: Env variable
+    }, config.animation.autoScrollInterval)
     return () => clearInterval(interval)
   }, [handleNavigation])
 
   // Gestion du mode mobile
   useEffect(() => {
     const handleResize = () => { 
-      setIsMobile(window.innerWidth < 768) // TODO: Env variable
+      setIsMobile(window.innerWidth < config.layout.breakpoints.mobile)
     }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
@@ -80,6 +98,7 @@ function HousingGallery({ pictures }) {
          <img 
            src={pictures[currentImage]} 
            alt={`Logement - Vue ${currentImage + 1}`} 
+           onClick={() => openModal(currentImage)}
          />
        </div>
        
@@ -119,6 +138,13 @@ function HousingGallery({ pictures }) {
            <span className={styles.arrow}></span>
          </button>
        </>
+     )}
+     {isModalOpen && (
+       <Modal 
+         images={pictures} 
+         initialIndex={selectedImageIndex} 
+         onClose={closeModal}
+       />
      )}
    </div>
  )

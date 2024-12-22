@@ -21,6 +21,17 @@
     line-height: $line-height-small;
   }
 
+  img {
+    max-width: 100px;
+    display: block;
+    object-fit: contain;
+
+    @include responsive(desktop) {
+      max-width: 200px;
+      margin-top: $spacing-md;
+    }
+  }
+
   @include responsive(desktop) {
     font-size: $font-size-large;
     gap: $spacing-xl;

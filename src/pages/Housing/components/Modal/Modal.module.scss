@@ -1,0 +1,110 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.modalContent {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $primary-color;
+    border-radius: $spacing-sm;
+    max-width: 90%;
+    max-height: 90vh;
+    padding: $spacing-xxs;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: auto;
+    height: auto;
+
+    @include responsive(tablet) {
+        top: 40%;
+    }
+
+    @include responsive(desktop) {
+        top: 50%;
+    }
+}
+
+img {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: $spacing-sm;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    background: none;
+    padding: $spacing-xs;
+    border: none;
+    cursor: pointer;
+    
+    @include responsive(tablet) {
+      padding: $spacing-md;
+    }
+
+    @include responsive(desktop) {
+      padding: $spacing-lg;
+    }
+    
+    .arrow {
+      display: block;
+      width: 17px; // Size for mobile 24px height for the whole arrow
+      height: 17px; // Size for mobile 24px height for the whole arrow 
+      border-right: 3px solid #FFF;
+      border-bottom: 3px solid #FFF;
+
+      @include responsive(tablet) {
+        border-right: 6px solid #FFF;
+        border-bottom: 6px solid #FFF;
+        width: 24px;
+        height: 24px;
+      }
+
+      @include responsive(desktop) {
+        border-right: 8px solid #FFF;
+        border-bottom: 8px solid #FFF;
+        width: 48px;
+        height: 48px;
+      }
+    }
+    
+    &.prev {
+      left: 0;
+    }
+
+    &.next {
+      right: 0;
+    }
+
+    &.prev .arrow {
+      transform: rotate(135deg); // Pour pointer vers la gauche
+    }
+    
+    &.next .arrow {
+      transform: rotate(-45deg); // Pour pointer vers la droite
+      
+    }
+  }
+

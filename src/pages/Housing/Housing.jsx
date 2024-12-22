@@ -1,6 +1,6 @@
 import { useParams, Navigate } from 'react-router-dom'
 import useHousing from '@hooks/useHousing'
-import HousingBody from './components/HousingBody/HousingBody'
+import HousingBody from './components/HousingBody'
 import styles from './Housing.module.scss'
 
 /**
@@ -20,11 +20,11 @@ function Housing() {
   
   if (isLoading) {
     return (
-      <main className={styles.housing}>
-        <div className={styles.housing__loadingState}>
-          Chargement du logement...
-        </div>
-      </main>
+        <main className={styles.housing}>
+          <div className={styles.housing__loadingState}>
+            Chargement du logement...
+          </div>
+        </main>
     )
   }
  
@@ -36,9 +36,9 @@ function Housing() {
   }
 
   return (
-    <main className={styles.housing}>
-      <HousingBody housing={housing} />
-    </main>
+      <main className={styles.housing}>
+        <HousingBody housing={housing} />
+      </main>
   )
 }
 
