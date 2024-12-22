@@ -59,21 +59,6 @@ function Hero() {
         loading="eager"
         fetchPriority="high"
         decoding="sync"
-        onLoad={(e) => {
-          // Mesure des performances
-          if (window.performance) {
-            const loadTime = window.performance.now()
-            console.log('Image loaded in:', loadTime, 'ms')
-            
-            // Marquer l'élément pour le LCP
-            const entry = {
-              duration: loadTime,
-              entryType: "largest-contentful-paint",
-              element: e.target
-            }
-            console.log('LCP Entry:', entry)
-          }
-        }}
       />
       {location.pathname === '/' && ( 
         <h1 className={styles.caption}>

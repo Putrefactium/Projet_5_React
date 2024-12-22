@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /housing
+Disallow: /error
+
+# Sitemap
+Sitemap: https://www.kasa.com/sitemap.xml
+
+# Temps de crawl
+Crawl-delay: 10
+
+# Ressources à ne pas crawler
+Disallow: /assets/
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*.scss$
+Disallow: /*.jsx$
