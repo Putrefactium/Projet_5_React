@@ -213,6 +213,7 @@ function HousingList() {
                 title={housing.title}
                 cover={housing.cover}
                 alt={housing.title}
+                index={housing.index}
               />
             ))}
           </div>

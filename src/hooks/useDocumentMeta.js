@@ -15,6 +15,21 @@ export const useDocumentMeta = ({ title, description, canonical, ogImage }) => {
    const defaultTitle = 'Kasa';
    document.title = title ? `${title} | ${defaultTitle}` : defaultTitle;
 
+   // Fonction pour créer une URL absolue
+   const createAbsoluteUrl = (url) => {
+     if (!url) return null;
+
+     // Si l'URL est déjà absolue, la retourne
+     if (url.startsWith('http')) {
+       return url;
+     }
+
+     // Sinon, ajoute l'URL de base
+     const origin = window.location.origin;
+     const cleanPath = url.startsWith('/') ? url : `/${url}`;
+     return `${origin}${cleanPath}`;
+   };
+
     // Mise à jour ou création des meta tags
    const updateMetaTag = (name, content) => {
      let meta = document.querySelector(`meta[name="${name}"]`) ||
@@ -42,17 +57,18 @@ export const useDocumentMeta = ({ title, description, canonical, ogImage }) => {
     // Gestion du lien canonique
    let canonicalLink = document.querySelector('link[rel="canonical"]');
 
-   if (!canonicalLink && canonical) {
-     canonicalLink = document.createElement('link');
-     canonicalLink.setAttribute('rel', 'canonical');
-     document.head.appendChild(canonicalLink);
-   }
+   const absoluteCanonical = createAbsoluteUrl(canonical || window.location.pathname);
 
-   if (canonicalLink && canonical) {
-     canonicalLink.setAttribute('href', canonical);
-   } else if (canonicalLink && !canonical) {
-     canonicalLink.remove();
-   }
+   if (!canonicalLink && absoluteCanonical) {
+    canonicalLink = document.createElement('link');
+    canonicalLink.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonicalLink);
+  }
+   if (canonicalLink && absoluteCanonical) {
+    canonicalLink.setAttribute('href', absoluteCanonical);
+  } else if (canonicalLink && !absoluteCanonical) {
+    canonicalLink.remove();
+  }
 
     // Nettoyage lors du démontage du composant
    return () => {
