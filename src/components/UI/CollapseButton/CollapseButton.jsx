@@ -26,12 +26,18 @@ function CollapseButton({ title, content, className, variant }) {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <div className={`${styles.button} ${className || ''}`}>
+        <div 
+            className={`${styles.button} ${className || ''}`}
+            id={`${title}-button`}
+        >
             <button 
                 className={`${styles.header} ${styles[variant]} ${isOpen ? styles.open : ''}`}
                 onClick={() => setIsOpen(!isOpen)}
+                type="button"
+                aria-expanded={isOpen}
+                aria-controls={`${title}-content`}
             >
-                <h2 className={styles[variant]}>{title}</h2>
+                <div className={styles[variant]}>{title}</div>
                 <span className={`${styles.arrow} ${styles[variant]}`}></span>
             </button>
             <div className={`${styles[variant]} ${styles.content} ${isOpen ? styles.open : ''}`}>

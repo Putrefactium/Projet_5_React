@@ -11,7 +11,7 @@ function HousingBody({ housing }) {
       <div className={styles.housingInformations}>
         <div className={styles.housingContent}>
             <h1 className={styles.housingTitle}>{housing.title}</h1>
-            <h2 className={styles.housingLocation}>{housing.location}</h2>
+            <p className={styles.housingLocation}>{housing.location}</p>
             <div className={styles.housingTags}>
             {housing.tags.map((tag) => (
               <span key={tag} className={styles.housingTag}>{tag}</span>

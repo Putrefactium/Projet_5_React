@@ -103,6 +103,7 @@ function HousingGallery({ pictures }) {
          <button 
            className={`${styles.navButton} ${styles.prev}`}
            onClick={() => handleNavigation('prev')}
+           aria-label="Image précédente"
          >
            <span className={styles.arrow}></span>
          </button>
@@ -113,6 +114,7 @@ function HousingGallery({ pictures }) {
          <button 
            className={`${styles.navButton} ${styles.next}`}
            onClick={() => handleNavigation('next')}
+           aria-label="Image suivante"
          >
            <span className={styles.arrow}></span>
          </button>

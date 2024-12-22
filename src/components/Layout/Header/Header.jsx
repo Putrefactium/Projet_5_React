@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import logoDesktop from '@assets/LOGO.png'
 import logoMobile from '@assets/LOGO_mobile.png'
 import { useState, useEffect } from 'react'
@@ -31,9 +31,11 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <Link to="/" className={styles.logo}>
-        <img src={logo} alt="Logo Kasa" />
-      </Link>
+        <img 
+            src={logo} 
+            alt="Logo Kasa" 
+            className={styles.logo}
+        />
       <nav className={styles.nav}>
         <NavLink 
           to="/" 
