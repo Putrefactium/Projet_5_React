@@ -1,5 +1,6 @@
 import HeroBanner from '@components/Layout/HeroBanner/HeroBanner'
 import OurValuesContainer from '@components/Layout/OurValuesContainer/OurValuesContainer'
+import SEO from '@components/SEO/SEO'
 import styles from './About.module.scss'
 
 /**
@@ -15,10 +16,17 @@ import styles from './About.module.scss'
 
 function About() {
   return (
-    <main className={styles.about}>
-      <HeroBanner />
-      <OurValuesContainer />
-    </main>
+    <>
+      <SEO 
+        title="A propos" 
+        description="Page à propos de Kasa" 
+        canonical="/about" 
+        ogImage="/" />
+      <main className={styles.about}>
+        <HeroBanner />
+        <OurValuesContainer />
+      </main>
+    </>
   )
 }
 

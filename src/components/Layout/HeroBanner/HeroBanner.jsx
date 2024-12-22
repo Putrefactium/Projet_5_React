@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import HomeHeroBanner from '@assets/home_hero_banner.jpg'
-import AboutHeroBanner from '@assets/about_hero_banner.jpg'
+import HomeHeroBanner from '@assets/home_hero_banner.webp'
+import AboutHeroBanner from '@assets/about_hero_banner.webp'
 import styles from './HeroBanner.module.scss'
 
 /**
@@ -56,11 +56,29 @@ function Hero() {
       <img 
         src={heroBannerImg[location.pathname]}
         alt={`Bannière de la page ${location.pathname === '/' ? "d'accueil" : 'à propos'}`} 
+        loading="eager"
+        fetchPriority="high"
+        decoding="sync"
+        onLoad={(e) => {
+          // Mesure des performances
+          if (window.performance) {
+            const loadTime = window.performance.now()
+            console.log('Image loaded in:', loadTime, 'ms')
+            
+            // Marquer l'élément pour le LCP
+            const entry = {
+              duration: loadTime,
+              entryType: "largest-contentful-paint",
+              element: e.target
+            }
+            console.log('LCP Entry:', entry)
+          }
+        }}
       />
       {location.pathname === '/' && ( 
-        <figcaption className={styles.caption}>
+        <h1 className={styles.caption}>
           Chez vous, {isMobile ? <br /> : ''}partout et ailleurs
-        </figcaption>
+        </h1>
       )}
     </figure>
   )

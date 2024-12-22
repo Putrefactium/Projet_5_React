@@ -212,6 +212,7 @@ function HousingList() {
                 id={housing.id}
                 title={housing.title}
                 cover={housing.cover}
+                alt={housing.title}
               />
             ))}
           </div>
@@ -224,6 +225,7 @@ function HousingList() {
                   id={housing.id}
                   title={housing.title}
                   cover={housing.cover}
+                  alt={housing.title}
                 />
               ))}
             </div>

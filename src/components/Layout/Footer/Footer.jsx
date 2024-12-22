@@ -16,7 +16,7 @@ import styles from './Footer.module.scss'
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <img src={logo} alt="Logo Kasa" />
+      <img src={logo} alt="Logo de la page Kasa" />
       <h2 className={styles.text}>© 2024 Kasa. All rights reserved</h2>
     </footer>
   )
