@@ -10,7 +10,6 @@
   color: $title-color;
   min-height: 209px;
   margin-top: auto;
-  font-size: $font-size-small;
   font-weight: 500;
   gap: $spacing-md;
   margin-top: $spacing-md;
@@ -19,6 +18,7 @@
     width: 30%;
     text-align: center;
     line-height: $line-height-small;
+    font-size: $font-size-small;
   }
 
   img {

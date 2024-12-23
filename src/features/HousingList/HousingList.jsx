@@ -39,10 +39,14 @@ function HousingList() {
   const containerRef = useRef(null) // Ref pour le container de la liste de logements
 
   // Calculs
-  const cardsPerPage = isLarge ? config.housingList.cardsPerPage.desktop : config.housingList.cardsPerPage.tablet // Nombre de cartes par page en mode Large, sinon 4 en Tablette
-  const totalPages = Math.ceil(housingsList.length / cardsPerPage) // Nombre total de pages
+  const cardsPerPage = isLarge // Nombre de cartes par page en mode Large, sinon 4 en Tablette
+    ? config.housingList.cardsPerPage.desktop 
+    : config.housingList.cardsPerPage.tablet 
+    
+  // Nombre total de pages
+  const totalPages = Math.ceil(housingsList.length / cardsPerPage) 
   
-  // Fonction des logements à afficher
+  // Fonction des logements à afficher en callback pour éviter de re-render à chaque changement de state
   const getDisplayedHousings = useCallback((page = currentPage) => {
     // Si on est en mode mobile, on affiche les 4 premiers logements
     if (isMobile) {
@@ -71,10 +75,12 @@ function HousingList() {
       { threshold: 0.1 }
     )
 
+    // Si le div de chargement est présent, on attache l'Observer à ce div
     if (loadingRef.current) {
       observerRef.current.observe(loadingRef.current)
     }
 
+    // On déconnecte l'Observer lors du démontage du composant
     return () => {
       if (observerRef.current) {
         observerRef.current.disconnect()
@@ -87,11 +93,11 @@ function HousingList() {
     setCurrentCards(getDisplayedHousings())
   }, [getDisplayedHousings, housingsList])
 
-  // Gestion de la transition entre les pages 
+  // Gestion de la transition entre les pages en callback pour éviter de re-render à chaque changement de state
   const handlePageTransition = useCallback((nextPage) => {
     if (isTransitioning) return
     
-    // On récupère les logements de la page suivante
+    // On récupère les logements de la page suivante 
     const nextHousings = getDisplayedHousings(nextPage)
 
     // On met les logements de la page suivante dans le state nextCards
@@ -116,8 +122,8 @@ function HousingList() {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth
-      setIsMobile(width < 768)
-      setIsLarge(width >= 1440)
+      setIsMobile(width < config.layout.breakpoints.mobile)
+      setIsLarge(width >= config.layout.breakpoints.desktop)
     }
 
     // On ajoute un écouteur d'événements pour le redimensionnement 
@@ -144,11 +150,12 @@ function HousingList() {
     }
   }, [isMobile, currentPage, isTransitioning, totalPages, handlePageTransition])
 
+  // Gestion de la transition entre les pages en callback pour éviter de re-render à chaque changement de state
   const handlePageChange = useCallback((pageNumber) => {
     handlePageTransition(pageNumber)
   }, [handlePageTransition])
 
-  // Ajout d'une fonction pour calculer le nombre de rangées
+  // Ajout d'une fonction pour calculer le nombre de rangées en callback 
   const getRowsClass = useCallback(() => {
     if (isMobile) return '';
 
