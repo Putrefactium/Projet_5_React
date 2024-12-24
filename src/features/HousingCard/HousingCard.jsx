@@ -12,23 +12,21 @@ import styles from './HousingCard.module.scss'
  * 
  * @example
  * return (
- *   <HousingCard id="1" title="Logement 1" cover="image.jpg" />
+ *   <HousingCard id="1" title="Logement 1" cover="image.jpg" index={0} />
  * )
  * 
  * @returns {JSX.Element} Un article contenant l'image et le titre du logement
  */
 
-function HousingCard({ id, title, cover, index }) {
+function HousingCard({ id, title, cover }) {
   return (
     <article className={styles.card}>
       <a href={`/housing/${id}`}>
         <div className={styles.imageContainer}>
           <img 
             src={cover} 
-            fetchPriority={index < 3 ? 'high' : 'low'}
             alt={title} 
             className={styles.image} 
-            loading={index < 3 ? 'eager' : 'lazy'}
           />
         </div>
         <h2 className={styles.title}>{title}</h2>
@@ -41,7 +39,6 @@ HousingCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
 }
 
 export default HousingCard

@@ -5,6 +5,14 @@ import Collapse from '@components/UI/CollapseButton/CollapseButton'
 import styles from './HousingBody.module.scss'
 
 function HousingBody({ housing }) {
+
+  const equipmentsList = 
+  <ul>
+    {housing.equipments.map((equipment) => (
+      <li key={equipment}>{equipment}</li>
+    ))}
+  </ul>
+
  return (
     <div className={styles.housingBody}>
       <HousingGallery pictures={housing.pictures} />
@@ -40,13 +48,8 @@ function HousingBody({ housing }) {
         title="Équipements" 
         className={styles.housingCollapse}
         variant="housing"
-        content={
-          <ul>
-            {housing.equipments.map((equipment) => (
-              <li key={equipment}>{equipment}</li>
-            ))}
-          </ul>
-        }
+        // isHtml={true}
+        content={equipmentsList}
         icon="fa-solid fa-arrow-down"
      />
     </div>
@@ -64,9 +67,9 @@ HousingBody.propTypes = {
             name: PropTypes.string.isRequired,
             picture: PropTypes.string.isRequired,
     }).isRequired,
-        rating: PropTypes.number.isRequired,
+        rating: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
-        equipments: PropTypes.arrayOf(PropTypes.string).isRequired,
+        equipments: PropTypes.array.isRequired,
     }).isRequired,
 }
 

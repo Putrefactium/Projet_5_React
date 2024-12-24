@@ -57,7 +57,6 @@ function Hero() {
         src={heroBannerImg[location.pathname]}
         alt={`Bannière de la page ${location.pathname === '/' ? "d'accueil" : 'à propos'}`} 
         loading="eager"
-        fetchPriority="high"
         decoding="sync"
       />
       {location.pathname === '/' && ( 

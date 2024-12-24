@@ -26,7 +26,7 @@ function Rating({ rating }) {
                 <FontAwesomeIcon
                     key={star}
                     icon="star"
-                    className={star <= rating ? styles.active : styles.inactive}
+                    className={star <= parseInt(rating) ? styles.active : styles.inactive}
                 />
             ))}
         </div>
@@ -36,5 +36,5 @@ function Rating({ rating }) {
 export default Rating
 
 Rating.propTypes = {
-    rating: PropTypes.number.isRequired,
+    rating: PropTypes.string.isRequired,
 }
