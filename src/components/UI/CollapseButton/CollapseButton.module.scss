@@ -100,11 +100,12 @@
             border-bottom-right-radius: $border-radius;
 
             @include responsive('tablet') { 
-                font-size: $font-size-medium;
+                font-size: $font-size-small;
                 flex-grow: 1;
+                overflow-y: auto;
 
                 &.housing {
-                    height: 200px;
+                    height: 100px;
                 }
             }
 
