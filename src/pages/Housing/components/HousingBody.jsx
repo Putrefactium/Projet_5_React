@@ -48,7 +48,6 @@ function HousingBody({ housing }) {
         title="Équipements" 
         className={styles.housingCollapse}
         variant="housing"
-        // isHtml={true}
         content={equipmentsList}
         icon="fa-solid fa-arrow-down"
      />

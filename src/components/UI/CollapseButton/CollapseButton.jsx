@@ -22,7 +22,7 @@ import styles from './CollapseButton.module.scss'
  * />
  */
 
-function CollapseButton({ title, content, className, variant, isHtml }) {
+function CollapseButton({ title, content, className, variant }) {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -41,21 +41,19 @@ function CollapseButton({ title, content, className, variant, isHtml }) {
                 <span className={`${styles.arrow} ${styles[variant]}`}></span>
             </button>
             <div className={`${styles[variant]} ${styles.content} ${isOpen ? styles.open : ''}`}>
-                <div className={`${styles.collapseContent} ${styles[variant]}`}>{isHtml ? JSON.parse(content) : content}</div>
+                <div className={`${styles.collapseContent} ${styles[variant]}`}>{content}</div>
             </div>
         </div>
     )
 }
 
-CollapseButton.defaultProps = {
-  isHtml: false,
-}
-
 CollapseButton.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+]).isRequired,
   className: PropTypes.string,
-  isHtml: PropTypes.bool,
   variant: PropTypes.string
 }
 
